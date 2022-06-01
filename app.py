@@ -8,12 +8,13 @@ print("...")
 
 
 async def echo(websocket):
+    print("connect")
     index = randrange(6)
     await websocket.send(sentence[index])
 
 
 async def main():
-    async with websockets.serve(echo, "0.0.0.0", os.environ.get('PORT', 5000)):
+    async with websockets.serve(echo, "signlanguagetranslator.herokuapp.com/0.0.0.0", int(os.environ.get('PORT', 5000))):
         await asyncio.Future()
 
 asyncio.run(main())
