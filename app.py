@@ -9,9 +9,11 @@ sentence = ['old', 'fine', 'are you ok', 'how are you', 'Hi', 'hello']
 
 
 async def echo(websocket):
+    async for message in websocket:
+        await websocket.send(message)
     # print("connect")
-    index = randrange(6)
-    await websocket.send(sentence[index])
+    # index = randrange(6)
+    # await websocket.send(sentence[index])
 
 
 async def main():
