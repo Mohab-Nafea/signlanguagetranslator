@@ -14,7 +14,7 @@ async def echo(websocket):
 
 
 async def main():
-    async with websockets.serve(echo, host="", port=int(os.environ["PORT"])):
+    async with websockets.serve(echo, host="", port=5000):
         await asyncio.Future()
 
 asyncio.run(main())
