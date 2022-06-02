@@ -1,4 +1,5 @@
 import asyncio
+import signal
 import websockets
 from random import randrange
 import os
@@ -14,7 +15,12 @@ async def echo(websocket):
 
 
 async def main():
+    loop = asyncio.get_running_loop()
+    stop = loop.create_future()
+    loop.add_signal_handler(signal.SIGTERM, stop.set_result, None)
+
     async with websockets.serve(echo, host="", port=int(os.environ["PORT"])):
-        await asyncio.Future()
+        await stop
+        # await asyncio.Future()
 
 asyncio.run(main())
