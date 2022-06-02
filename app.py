@@ -14,7 +14,7 @@ async def echo(websocket):
 
 
 async def main():
-    async with websockets.serve(echo, "signlanguagetranslator.herokuapp.com/0.0.0.0", int(os.environ.get('PORT', 5000))):
+    async with websockets.serve(echo, "", int(os.environ.get('PORT', 5000))):
         await asyncio.Future()
 
 asyncio.run(main())
